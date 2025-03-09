@@ -3,6 +3,7 @@ package ch.hontech.course_master.course.services;
 import ch.hontech.course_master.common.exception.NotFoundException;
 import ch.hontech.course_master.course.entities.Course;
 import ch.hontech.course_master.course.repositories.CourseRepository;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ public class CourseService {
 
     public Course create(Course course) {
         course.setId(UUID.randomUUID());
+        course.setCreatedAt(LocalDateTime.now());
 
         return courseRepository.save(course);
     }
